@@ -72,6 +72,14 @@ const themeConfig = {
         // from the `shared` object below and specify it in each theme
         fontFamily: '"Comic Sans MS", "Comic Sans',
       },
+      background: {
+        // Background for <body>
+        // and <Section color="default">
+        default: "#F5F5F5",
+        // Background for elevated
+        // components (<Card>, etc)
+        paper: "#fff",
+      },
     },
   },
 

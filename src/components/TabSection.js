@@ -48,7 +48,6 @@ export default function ColorTabs() {
     
       </Tabs>
       <TabPanel value={value} index={0}>
-    
         <EnhancedTable />
       </TabPanel>
       <TabPanel value={value} index={1}>

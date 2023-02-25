@@ -13,15 +13,11 @@ import Box from "@mui/material/Box";
 import Chart from "components/Chart"
 import { PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import Contact from "components/Contact";
 function DashboardPage(props) {
   
   return (
-    <> <Navbar2
-    color="default"
-    logo=""
-    logoInverted=""
-  />
+    <> 
       <Meta title="Dashboard" />
       <Section
       bgColor={props.bgColor}
@@ -49,6 +45,11 @@ function DashboardPage(props) {
           size={6}
           sx={{ textAlign: "left" }}
         />
+        <Contact
+          showNameField={props.showNameField}
+          buttonText={props.buttonText}
+          buttonColor={props.buttonColor}
+        />
          </Box>
               </CardContent>
             </Card>
@@ -72,16 +73,7 @@ function DashboardPage(props) {
       </Container>
     </Section>
       
-        <Footer
-        bgColor="default"
-        size="medium"
-        bgImage=""
-        bgImageOpacity={1}
-        copyright={`© ${new Date().getFullYear()} Company`}
-        logo=""
-        logoInverted=""
-        sticky={false}
-      />
+       
    
     </>
 

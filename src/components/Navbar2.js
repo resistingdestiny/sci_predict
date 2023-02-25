@@ -65,7 +65,7 @@ function Navbar2(props) {
                   Predict
                 </Button>
               </Link>
-              <Link href="" passHref={true}>
+              <Link href="/makeprediction" passHref={true}>
                 <Button component="a" color="inherit">
                   Learn                </Button>
               </Link>

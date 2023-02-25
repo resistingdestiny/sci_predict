@@ -1,7 +1,6 @@
 import React from "react";
 import Meta from "components/Meta";
 import DashboardSection2 from "components/DashboardSection2";
-import Navbar2 from "components/Navbar2";
 import Footer from "components/Footer";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
@@ -17,7 +16,6 @@ import VotingComponent from "components/voting";
 import Typography from "@mui/material/Typography";
 import EnhancedTable from "components/Table"
 import ColorTabs from "components/TabSection"
-
 function DashboardPage(props) {
   const options = ["Option A", "Option B", "Option C"];
   const data = [
@@ -54,11 +52,7 @@ function DashboardPage(props) {
     },
   ];
   return (
-    <> <Navbar2
-    color="default"
-    logo="logo.svg"
-    logoInverted="logo.svg"
-  />
+    <> 
       <Meta title="Dashboard" />
       <Section
       bgColor={props.bgColor}
@@ -95,8 +89,8 @@ function DashboardPage(props) {
                       >
                          <defs>
                          <linearGradient id="colorUv" x1="0%" y1="0%" x2="0%" y2="100%">
-  <stop offset="0%" stop-color="#1EBEA5"/>
-  <stop offset="100%" stop-color="rgba(255, 255, 255, 0)"/>
+  <stop offset="0%" stopColor="#1EBEA5"/>
+  <stop offset="100%" stopColor="rgba(255, 255, 255, 0)"/>
 </linearGradient>
         </defs>
                         <CartesianGrid strokeDasharray="3 3" />
@@ -117,8 +111,7 @@ function DashboardPage(props) {
             <Card>
               <CardContent sx={{ padding: 3 }}>
                 <Box>
-      
-              
+
                 </Box>
               </CardContent>
             </Card>
@@ -168,16 +161,7 @@ function DashboardPage(props) {
       </Container>
     </Section>
       
-        <Footer
-        bgColor="default"
-        size="medium"
-        bgImage=""
-        bgImageOpacity={1}
-        copyright={`© ${new Date().getFullYear()} Company`}
-        logo="logo.svg"
-        logoInverted="logo.svg"
-        sticky={false}
-      />
+       
    
     </>
 

@@ -7,10 +7,10 @@
   ],
   "dependencies": {
     "@analytics/google-analytics": "0.2.2",
-    "@emotion/react": "11.9.0",
-    "@emotion/styled": "11.8.1",
-    "@emotion/server": "latest",
     "@emotion/cache": "latest",
+    "@emotion/react": "11.9.0",
+    "@emotion/server": "latest",
+    "@emotion/styled": "11.8.1",
     "@mui/icons-material": "5.8.0",
     "@mui/lab": "5.0.0-alpha.83",
     "@mui/material": "5.8.1",
@@ -28,6 +28,7 @@
     "react-dom": "17.0.2",
     "react-hook-form": "6.15.1",
     "react-query": "3.32.1",
+    "recharts": "^2.4.3",
     "stripe": "8.132.0",
     "use-local-storage-state": "9.0.2"
   },

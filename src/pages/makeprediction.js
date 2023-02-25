@@ -44,9 +44,9 @@ function DashboardPage(props) {
               <CardContent sx={{ padding: 3 }}>
                 <Box>
                 <SectionHeader
-          title= "What will be the average global temperature in 2042?"
+          title= "Make a prediction"
           subtitle= ""
-          size={8}
+          size={6}
           sx={{ textAlign: "left" }}
         />
          </Box>

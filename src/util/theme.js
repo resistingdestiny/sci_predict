@@ -28,12 +28,12 @@ const themeConfig = {
         //dark: "#115293",
       },
       secondary: {
-        main: colors.pink["500"],
+        main: '#1EBEA5',
       },
       background: {
         // Background for <body>
         // and <Section color="default">
-        default: "#fff",
+        default: "#F5F5F5",
         // Background for elevated
         // components (<Card>, etc)
         paper: "#fff",

@@ -5,11 +5,17 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useForm } from "react-hook-form";
+import { Chip } from "@mui/material";
 
 
-function Contact(props) {
+function predictionData(props) {
   const [pending, setPending] = useState(false);
   const [formAlert, setFormAlert] = useState(null);
+  const [values, setValues] = useState([]); // <-- state for storing entered values
+  const [description, setDescription] = useState([]); // 
+  const [name, setName] = useState([]); // 
+
+
   const { handleSubmit, register, errors, reset } = useForm();
 
   const onSubmit = (data) => {
@@ -17,6 +23,13 @@ function Contact(props) {
     setPending(true);
 
    
+  };
+  const handleAddValue = () => {
+    const value = document.querySelector("#value").value;
+    if (value) {
+      setValues([...values, value]); // <-- add the entered value to the list of values
+      document.querySelector("#value").value = "";
+    }
   };
 
   return (
@@ -29,11 +42,11 @@ function Contact(props) {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container={true} spacing={2}>
-            <Grid item={true} xs={12} md={6}>
+            <Grid item={true} xs={12} >
               <TextField
                 type="text"
-                label="Name"
-                name="name"
+                label="Prediction Title"
+                name="prediction"
                 error={errors.name ? true : false}
                 helperText={errors.name && errors.name.message}
                 fullWidth={true}
@@ -44,23 +57,11 @@ function Contact(props) {
             </Grid>
         
 
-          <Grid item={true} xs={12} md={props.showNameField ? 6 : 12}>
-            <TextField
-              type="email"
-              label="Email"
-              name="email"
-              error={errors.email ? true : false}
-              helperText={errors.email && errors.email.message}
-              fullWidth={true}
-              inputRef={register({
-                required: "Please enter your email",
-              })}
-            />
-          </Grid>
+        
           <Grid item={true} xs={12}>
             <TextField
               type="text"
-              label="Message"
+              label="Prediction Description"
               name="message"
               multiline={true}
               rows={5}
@@ -73,22 +74,38 @@ function Contact(props) {
             />
           </Grid>
           <Grid item={true} xs={12}>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              type="submit"
-              disabled={pending}
-            >
-              {!pending && <span>Add Prediction</span>}
-
-              {pending && <CircularProgress size={28} />}
+            {/* Input field for adding a new value */}
+            <TextField
+              type="text"
+              label="Prediction Options"
+              name="value"
+              id="value"
+            />
+            {/* Button to add the entered value as a chip */}
+            <Button variant="outlined" onClick={handleAddValue} sx={{ ml:  4, height: '100%' }}>
+              Add Option
             </Button>
           </Grid>
+
+          <Grid item={true} xs={12}>
+            {/* Display the entered values as chips */}
+            {values.map((value, index) => (
+              <Chip
+                key={index}
+                label={value}
+                onDelete={() => {
+                  setValues(values.filter((v) => v !== value));
+                }}
+                sx={{ mr: 1, mb: 1 }}
+              />
+            ))}
+          </Grid>
+        
+
         </Grid>
       </form>
     </>
   );
 }
 
-export default Contact;
+export default predictionData;

@@ -60,7 +60,7 @@ function Navbar2(props) {
               </a>
             </Link>
             <Box sx={{ ml: 2, display: { md: "block", xs: "none" } }}>
-              <Link href="" passHref={true}>
+              <Link href="/dashboard" passHref={true}>
                 <Button component="a" color="inherit">
                   Predict
                 </Button>
@@ -92,8 +92,11 @@ function Navbar2(props) {
                     <Button
                       component="a"
                       variant="contained"
-                      color="primary"
-                      sx={{ ml: 1 }}
+                      sx={{
+                        backgroundImage: 'linear-gradient(85.9deg, #1EBEA5 -14.21%, #00B5C4 18.25%, #00A8E6 52.49%, #0096FD 81.67%, #157AFB 111.44%)',
+                        color: 'white',
+                        ml: 1,
+                      }}
                     >
                       Sign up
                     </Button>

@@ -16,7 +16,21 @@ import VotingComponent from "components/voting";
 import Typography from "@mui/material/Typography";
 import EnhancedTable from "components/Table"
 import ColorTabs from "components/TabSection"
+import CardStatsHorizontal from "components/CardStatistics";
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import { makeStyles } from "@mui/styles";
+const useStyles = makeStyles((theme) => ({
+  gradientText: {
+    backgroundClip: "text",
+    backgroundImage:
+      "linear-gradient(85.9deg, #1EBEA5 -14.21%, #00B5C4 18.25%, #00A8E6 52.49%, #0096FD 81.67%, #157AFB 111.44%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  },
+}));
 function DashboardPage(props) {
+  const classes = useStyles();
+
   const options = ["Option A", "Option B", "Option C"];
   const data = [
     {
@@ -72,16 +86,16 @@ function DashboardPage(props) {
         <Grid container={true} spacing={4}>
           <Grid item={true} xs={12} md={8}>
           <Card>
-              <CardContent sx={{ padding: 3 }}>
+              <CardContent sx={{  }}>
                 <Box>
-                  <h4 sx={{ textAlign: "left" }}>What will be the average global temperature in 2042?</h4>
+                  <h2 className={classes.gradientText} sx={{ textAlign: "left" }}>What will be the average global temperature in 2042?</h2>
                 
                       <ComposedChart
-                        width={600}
-                        height={300}
+                        width={700}
+                        height={400}
                         data={data}
                         margin={{
-                          top: 5,
+                          top: 15,
                           right: 30,
                           left: 20,
                           bottom: 5,
@@ -110,9 +124,16 @@ function DashboardPage(props) {
             <Grid item mb={4}> 
             <Card>
               <CardContent sx={{ padding: 3 }}>
-                <Box>
+              <Box display="flex" alignItems="center">
+              <AccountBalanceWalletIcon />
 
-                </Box>
+              <Typography sx={{ fontWeight: 'bold', marginLeft: 2 }}>
+    <strong style={{ fontWeight: 'bold', padding: 3, ML: 5}}>Commited Capital:</strong>
+  </Typography>
+  <Typography sx={{ fontWeight: 'bold', marginLeft: 2 }} className={classes.gradientText}>
+    3 ETH
+  </Typography>
+</Box>
               </CardContent>
             </Card>
             </Grid>
@@ -120,7 +141,7 @@ function DashboardPage(props) {
             <Card>
               <CardContent sx={{ padding: 3 }}>
                 <Box>
-                <VotingComponent options={options} />
+                <VotingComponent useStyles = {useStyles} options={options} />
               
                 </Box>
               </CardContent>

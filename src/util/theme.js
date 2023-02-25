@@ -50,7 +50,7 @@ const themeConfig = {
         main: colors.blue["300"],
       },
       secondary: {
-        main: colors.pink["500"],
+        main: "#1EBEA5",
       },
       background: {
         default: colors.grey["900"],
@@ -67,21 +67,14 @@ const themeConfig = {
       primary: {
         main: colors.purple["300"],
       },
-      typography: {
-        // This font will only be applied if you remove `fontFamily`
-        // from the `shared` object below and specify it in each theme
-        fontFamily: '"Comic Sans MS", "Comic Sans',
-      },
-      background: {
-        // Background for <body>
-        // and <Section color="default">
-        default: "#F5F5F5",
-        // Background for elevated
-        // components (<Card>, etc)
-        paper: "#fff",
-      },
+    },
+    typography: {
+      // This font will only be applied if you remove `fontFamily`
+      // from the `shared` object below and specify it in each theme
+      fontFamily: '"Comic Sans MS", "Comic Sans',
     },
   },
+
 
   // Values shared by all themes
   // These will be merged into the current theme
@@ -126,6 +119,15 @@ const themeConfig = {
         },
       },
       // Customize Link component
+      MuiAppBar: {
+        styleOverrides: {
+          root: {
+            backgroundColor: "#fff",
+            color: "#000",
+          },
+        },
+      },
+
       MuiLink: {
         defaultProps: {
           // Only underline links on hover

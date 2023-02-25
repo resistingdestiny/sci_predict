@@ -13,7 +13,8 @@ import Box from "@mui/material/Box";
 import Chart from "components/Chart"
 import { PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import Contact from "components/Contact";
+import PredictionData from "components/predictionData";
+import PredictionMeta from "components/predictionMeta"
 function DashboardPage(props) {
   
   return (
@@ -35,17 +36,17 @@ function DashboardPage(props) {
 
         
         <Grid container={true} spacing={4}>
-          <Grid item={true} xs={12} md={7}>
+          <Grid item={true} xs={12} md={8}>
           <Card>
               <CardContent sx={{ padding: 3 }}>
                 <Box>
                 <SectionHeader
-          title= "Make a prediction"
-          subtitle= ""
+          title= "Request a prediction"
+          subtitle= "Submit a prediction request to our network"
           size={6}
           sx={{ textAlign: "left" }}
         />
-        <Contact
+        <PredictionData
           showNameField={props.showNameField}
           buttonText={props.buttonText}
           buttonColor={props.buttonColor}
@@ -54,12 +55,22 @@ function DashboardPage(props) {
               </CardContent>
             </Card>
             </Grid>
-                     <Grid item={true} xs={12} md={5}>
+                     <Grid item={true} xs={12} md={4}>
             <Grid item mb={4}> 
             <Card>
               <CardContent sx={{ padding: 3 }}>
                 <Box>
-                
+                <SectionHeader
+          title= "Additional Information"
+          subtitle= ""
+          size={7}
+          sx={{ textAlign: "left" }}
+        />
+                <PredictionMeta
+          showNameField={props.showNameField}
+          buttonText={props.buttonText}
+          buttonColor={props.buttonColor}
+        />
               
                 </Box>
               </CardContent>

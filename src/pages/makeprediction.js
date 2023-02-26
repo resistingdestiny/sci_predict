@@ -54,7 +54,7 @@ function DashboardPage(props) {
           <Card>
               <CardContent sx={{ padding: 3 }}>
                 <Box>
-                <h2 className={classes.gradientText} sx={{ textAlign: "left" }}>Request a prediction</h2>
+                <Typography variant="h5"  sx={{ fontWeight: "bold", mb: 4}} className={classes.gradientText} align="left">Request Prediction</Typography>
 
                 
         <PredictionData

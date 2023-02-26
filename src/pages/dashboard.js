@@ -36,33 +36,33 @@ function DashboardPage(props) {
   const data = [
     {
       name: '2018',
-      temperature: 4
+      Temperature: 4
      
     },
     {
       name: '2019',
-      temperature: 2
+      Temperature: 2
     },
     {
       name: '2020',
-      temperature: 1
+      Temperature: 1
     },
     {
       name: '2021',
-      temperature: 2
+      Temperature: 2
     },
     {
       name: '2022',
-      temperature: 3
+      Temperature: 3
     },
     {
       name: '2023',
-      temperature: 4
+      Temperature: 4
      
     },
     {
       name: '2024',
-      temperature: 5
+      Temperature: 5
     
     },
   ];
@@ -89,7 +89,8 @@ function DashboardPage(props) {
           <Card>
               <CardContent sx={{  }}>
                 <Box>
-                  <h2 className={classes.gradientText} sx={{ textAlign: "left" }}>What will be the average global temperature in 2042?</h2>
+                <Typography variant="h5"  sx={{ fontWeight: "bold", mb: 4}} className={classes.gradientText} align="left">What will be the average global temperature in 2042?</Typography>
+
                 
                       <ComposedChart
                         width={700}
@@ -108,13 +109,14 @@ function DashboardPage(props) {
   <stop offset="100%" stopColor="rgba(255, 255, 255, 0)"/>
 </linearGradient>
         </defs>
-                        <CartesianGrid strokeDasharray="3 3" />
+                        <CartesianGrid strokeDasharray="3" />
                         <XAxis dataKey="name" />
                         <YAxis />
                         <Tooltip />
                         <Legend legendType="line"/>
-                        <Area tooltipType="none" legendType="none" type="monotone" dataKey="temperature" stroke={false} strokeWidth={2} fillOpacity={1} fill="url(#colorUv)" />
-                        <Line type="monotone" dataKey="temperature" activeDot={{ r: 8 }} stroke="#1EBEA5" strokeWidth={3} />
+                        {/* <Area tooltipType="none" legendType="none" type="monotone" dataKey="temperature" stroke={false} strokeWidth={2} fillOpacity={1} fill="url(#colorUv)" /> */}
+                        <Line type="monotone" dataKey="Temperature" activeDot={{ r: 8 }}     stroke="#00B5C4"
+ strokeWidth={3} />
                       </ComposedChart>
               
                 </Box>

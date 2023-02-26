@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Meta from "components/Meta";
 import { useState } from "react";
 import DashboardSection2 from "components/DashboardSection2";
@@ -25,7 +26,6 @@ import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import TabContext from '@mui/lab/TabContext'
 import Avatar from '@mui/material/Avatar'
-
 const useStyles = makeStyles((theme) => ({
   priceChip: {
     backgroundColor: '#4caf50', // Change this to your desired shade of green
@@ -39,12 +39,46 @@ const useStyles = makeStyles((theme) => ({
     WebkitTextFillColor: "transparent",
   },
 }));
-function DashboardPage(props) {
+
+  function DashboardPage(props) {
+    const router = useRouter();
+
+    const handleRowClick = () => {
+    
+      router.push('/dashboard');}
+  
   const [value, setValue] = useState('all')
   const [searchText, setSearchText] = useState("Frog");
   const handleSearchTextChange = (event) => {
     setSearchText(event.target.value);
   };
+  const handleChange = (event, newValue) => {
+    setValue(newValue)
+  }
+  const RenderTabAvatar = ({ category }) => (
+    <Avatar
+      variant='rounded'
+      sx={{
+        width: 100,
+        height: 92,
+        backgroundColor: 'transparent',
+        border: theme =>
+          value === category ? `2px solid ${theme.palette.primary.main}` : `2px dashed ${theme.palette.divider}`
+      }}
+    >
+      <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+        <img
+          width={34}
+          height={34}
+          alt={`tabs-${category}`}
+          src={`/images/${category}.svg`}
+        />
+        <Typography className={classes.gradientText} variant='body2' sx={{ mt: 2, fontWeight: 600, textTransform: 'capitalize' }}>
+          {category}
+        </Typography>
+      </Box>
+    </Avatar>
+  )
    const getFilteredRows = () => {
     if (searchText === "") {
       return rows;
@@ -58,9 +92,9 @@ function DashboardPage(props) {
     }
   };
   const rows = [
-    { id: 1, prediction: "What is the global temperature in 2022?", category: "climate", consensus: 25, price: 0.98, predictors: 22 },
-    { id: 2, prediction: "What is the global temperature in 2022?", category: "finance", consensus: 25, price: 0.98, predictors: 22 },
-    { id: 3, prediction: "What is the global temperature in 2022 Frog ?", category: "development", consensus: 25, price: 0.98, predictors: 22 },
+    { id: 1, prediction: "What will be the global average temperature in 2042?", category: "climate", consensus: 25, price: 0.98, predictors: 22 },
+    { id: 2, prediction: "What will the inflation rate be in 2027?", category: "finance", consensus: "4%", price: 0.20, predictors: 22 },
+    { id: 3, prediction: "What decade will we achieve AGI?", category: "risks", consensus: "2040s", price: 0.68, predictors: 22 },
     ];
   const classes = useStyles();
   const columns = [
@@ -69,7 +103,7 @@ function DashboardPage(props) {
       minWidth: 100,
       field: 'prediction',
       headerName: 'Prediction',
-      renderCell: ({ row }) =>  <Typography onClick={() => console.log('prediction')} variant='body2'>{row.prediction}</Typography>
+      renderCell: ({ row }) =>  <Typography sx={{ fontWeight: 'bold'}} className={classes.gradientText} variant='body2'>{row.prediction}</Typography>
     },
     {
       flex: 0.2,
@@ -84,7 +118,7 @@ function DashboardPage(props) {
       field: 'consensus',
       headerName: 'Consensus',
       renderCell: ({ row }) => (
-        <Chip label={`$${row.consensus}`} className={classes.priceChip} />
+        <Chip label={`${row.consensus}`} className={classes.priceChip} />
       )    },
     {
       flex: 0.1,
@@ -130,17 +164,130 @@ function DashboardPage(props) {
         <Grid container={true} spacing={4}>
           <Grid item={true} xs={12} md={12}>
           <Card>
+          
               <CardContent sx={{ padding: 3 }}>
                 <Box>
-                <div style={{ height: 400, width: "100%" }}>
-      <DataGrid 
-      columns={columns}
-      rows={rows}
-components={{ Toolbar: GridToolbar }} 
-autoHeight // enable auto-height to ensure all rows are visible
+                <Typography variant="h5"  sx={{ fontWeight: "bold", mb: 4}} className={classes.gradientText} align="left">View Predictions</Typography>
 
-/>
+                <div style={{ width: "100%" }}>
+ 
+<TabContext value={value}>
+        <TabList
+          variant='scrollable'
+          scrollButtons='auto'
+          onChange={handleChange}
+          aria-label='top referral sources tabs'
+          sx={{
+            mb: 0,
+            px: 5,
+            '& .MuiTab-root:not(:last-child)': { mr: 4 },
+            '& .MuiTabs-indicator': { display: 'none' }
+          }}
+        >
+           <Tab value='all' sx={{ p: 0 }} label={<RenderTabAvatar category='All' />} />
+          <Tab value='climate' sx={{ p: 0 }} label={<RenderTabAvatar category='Climate' />} />
+          <Tab value='risks' sx={{ p: 0 }} label={<RenderTabAvatar category='Risks' />} />
+          <Tab value='finance' sx={{ p: 0 }} label={<RenderTabAvatar category='Finance' />} />
 
+          
+        
+        </TabList>
+        <TabPanel sx={{ p: 0, mt: 5, mb: 10 }} value='all'>
+                                  
+                      <DataGrid 
+
+  
+                      columns={columns}
+                      rows={rows}
+                      onRowClick={handleRowClick}
+                components={{ Toolbar: GridToolbar }} 
+                autoHeight // enable auto-height to ensure all rows are visible
+                sx={{ p: 0, mb: 4 }}
+                />
+
+
+       </TabPanel>
+       <TabPanel sx={{ p: 0, mt: 5, mb: 10 }} value='climate'>
+                                  
+                                  <DataGrid 
+                                  columns={columns}
+                                  rows={rows}
+                                  initialState={{
+                                    filter: {
+                                      filterModel: {
+                                        items: [
+                                          {
+                                            columnField: 'category',
+                                            value: "Climate",
+                                            operatorValue: 'contains',
+                                          },
+                                        ],
+                                      },
+                                    },
+                                  }}
+                            components={{ Toolbar: GridToolbar }} 
+                            autoHeight // enable auto-height to ensure all rows are visible
+                            sx={{ p: 0, mb: 4 }}
+                            />
+            
+            
+                   </TabPanel>
+                   <TabPanel sx={{ p: 0, mt: 5, mb: 10 }} value='risks'>
+                                  
+                                  <DataGrid 
+                                  columns={columns}
+                                  rows={rows}
+                                  initialState={{
+                                    filter: {
+                                      filterModel: {
+                                        items: [
+                                          {
+                                            columnField: 'category',
+                                            value: "Risks",
+                                            operatorValue: 'contains',
+                                          },
+                                        ],
+                                      },
+                                    },
+                                  }}
+                            components={{ Toolbar: GridToolbar }} 
+                            autoHeight // enable auto-height to ensure all rows are visible
+                            sx={{ p: 0, mb: 4 }}
+                            />
+            
+            
+                   </TabPanel>
+                   <TabPanel sx={{ p: 0, mt: 5, mb: 10 }} value='finance'>
+                                  
+                                  <DataGrid 
+                                  columns={columns}
+                                  rows={rows}
+                                  initialState={{
+                                    filter: {
+                                      filterModel: {
+                                        items: [
+                                          {
+                                            columnField: 'category',
+                                            value: "Finance",
+                                            operatorValue: 'contains',
+                                          },
+                                        ],
+                                      },
+                                    },
+                                  }}
+                            components={{ Toolbar: GridToolbar }} 
+                            autoHeight // enable auto-height to ensure all rows are visible
+                            sx={{ p: 0, mb: 4 }}
+                            />
+            
+            
+                   </TabPanel>
+
+
+
+
+       
+</TabContext>
     </div>
          </Box>
               </CardContent>

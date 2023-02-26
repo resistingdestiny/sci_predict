@@ -80,11 +80,10 @@ Predict        </Button>
           Subtotal: ${(subtotal).toFixed(2)}
         </div>
         </div>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "20px" }}></div>
         {selectedOption && (
 
-        <div className={classes.gradientText}>
-          Expected Payoff: ${((quantity*1) - subtotal).toFixed(2)}
+<div style={{ fontWeight: "bold", textAlign: "center", marginTop: "20px" }} className={classes.gradientText}>
+Expected Payoff: ${((quantity*1) - subtotal).toFixed(2)}
         </div>)}
       </div>
   );

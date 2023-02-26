@@ -69,6 +69,10 @@ function Navbar2(props) {
                 <Button component="a" color="inherit">
                   Learn                </Button>
               </Link>
+              <Link href="/viewall" passHref={true}>
+                <Button component="a" color="inherit">
+                  All                </Button>
+              </Link>
               
               
             </Box>

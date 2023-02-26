@@ -173,7 +173,7 @@ function DashboardPage(props) {
             <Card>
               <CardContent sx={{ padding: 3 }}>
                 <Box>
-                  <ColorTabs />
+                  <ColorTabs useStyles = {useStyles} />
               
                 </Box>
               </CardContent>

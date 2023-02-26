@@ -25,7 +25,7 @@ function predictionData(props) {
    
   };
   const handleAddValue = () => {
-    const value = document.querySelector("#value").value;
+    const value = document.querySelector("#value").value + " " + document.querySelector("#unit").value ;
     if (value) {
       setValues([...values, value]); // <-- add the entered value to the list of values
       document.querySelector("#value").value = "";
@@ -74,6 +74,12 @@ function predictionData(props) {
             />
           </Grid>
           <Grid item={true} xs={12}>
+          <TextField sx = {{mr:4}}
+              type="unit"
+              label="Unit"
+              name="unit"
+              id="unit"
+            />
             {/* Input field for adding a new value */}
             <TextField
               type="text"
@@ -85,6 +91,7 @@ function predictionData(props) {
             <Button variant="outlined" onClick={handleAddValue} sx={{ ml:  4, height: '100%' }}>
               Add Option
             </Button>
+           
           </Grid>
 
           <Grid item={true} xs={12}>
@@ -99,6 +106,12 @@ function predictionData(props) {
                 sx={{ mr: 1, mb: 1 }}
               />
             ))}
+          </Grid>
+          <Grid item={true} xs={12}>
+            {/* Input field for adding a new value */}
+         
+            {/* Button to add the entered value as a chip */}
+           
           </Grid>
         
 

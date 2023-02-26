@@ -16,7 +16,6 @@ function predictionMeta(props) {
   const [values, setValues] = useState([]); // <-- state for storing entered values
   const [description, setDescription] = useState([]); // 
   const [name, setName] = useState([]); // 
-  const [selectedStartDate, setSelectedStartDate] = useState(null);
   const [selectedEndDate, setSelectedEndDate] = useState(null);
 
 
@@ -29,9 +28,7 @@ function predictionMeta(props) {
    
   };
 
-  const handleStartDateChange = (date) => {
-    setSelectedStartDate(date);
-  };
+
   const handleEndDateChange = (date) => {
     setSelectedEndDate(date);
   };
@@ -50,22 +47,7 @@ function predictionMeta(props) {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container={true} spacing={2}>
-        <Grid item xs={12}>
-  <DatePicker
-    label="Start Date"
-    name="date"
-    disableFuture={true}
-    value={selectedStartDate}
-    onChange={handleStartDateChange}
-    inputRef={register({
-      required: "Please select a date",
-    })}
-    renderInput={(params) => <TextField {...params} />}
-  />
-  {errors.date && (
-    <span style={{ color: "red" }}>{errors.date.message}</span>
-  )}
-</Grid>
+      
         
 
 <Grid item xs={12}>  
@@ -81,6 +63,22 @@ function predictionMeta(props) {
     renderInput={(params) => <TextField {...params} />}
   />
   </Grid>
+  <Grid item xs={12}>  
+
+  <TextField
+              type="text"
+              label="Committed Funds"
+              name="value"
+              id="value"
+            />
+  </Grid>
+
+  {/* Dropdown selector */}
+    {/* Permissioned Checkmark */}
+    {/* Category API End Point */}
+    {/* API End Point */}
+
+
 
           <Grid item={true} xs={12}>
           <Button disabled={!selectedEndDate}

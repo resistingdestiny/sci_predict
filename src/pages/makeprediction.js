@@ -15,9 +15,23 @@ import { PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import PredictionData from "components/predictionData";
 import PredictionMeta from "components/predictionMeta"
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles((theme) => ({
+  gradientText: {
+    backgroundClip: "text",
+    backgroundImage:
+      "linear-gradient(85.9deg, #1EBEA5 -14.21%, #00B5C4 18.25%, #00A8E6 52.49%, #0096FD 81.67%, #157AFB 111.44%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  },
+}));
 function DashboardPage(props) {
   
+  const classes = useStyles();
+
   return (
+
     <> 
       <Meta title="Dashboard" />
       <Section
@@ -40,12 +54,9 @@ function DashboardPage(props) {
           <Card>
               <CardContent sx={{ padding: 3 }}>
                 <Box>
-                <SectionHeader
-          title= "Request a prediction"
-          subtitle= "Submit a prediction request to our network"
-          size={6}
-          sx={{ textAlign: "left" }}
-        />
+                <h2 className={classes.gradientText} sx={{ textAlign: "left" }}>Request a prediction</h2>
+
+                
         <PredictionData
           showNameField={props.showNameField}
           buttonText={props.buttonText}

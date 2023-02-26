@@ -4,6 +4,8 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import EnhancedTable from 'components/Table'
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import Button from "@mui/material/Button";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -27,8 +29,9 @@ function TabPanel(props) {
 
 
 
-export default function ColorTabs() {
+export default function ColorTabs(props) {
   const [value, setValue] = React.useState(0);
+  const classes = props.useStyles();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -45,6 +48,7 @@ export default function ColorTabs() {
       >
         <Tab label="History" />
         <Tab label="Redeem" />
+        <Tab label="Adminstrator" />
     
       </Tabs>
       <TabPanel value={value} index={0}>
@@ -54,7 +58,25 @@ export default function ColorTabs() {
         <Typography>Tab Two Content</Typography>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Typography>Tab Three Content</Typography>
+        <Box>
+        <Typography>
+        <Box display="flex" alignItems="center">
+              <AccountBalanceWalletIcon />
+
+              <Typography sx={{ fontWeight: 'bold', marginLeft: 2 }}>
+    <strong style={{ fontWeight: 'bold', padding: 3, ML: 5}}>My Commited Capital:</strong>
+  </Typography>
+  <Typography sx={{ fontWeight: 'bold', marginLeft: 2 }} className={classes.gradientText}>
+    3 ETH 
+  </Typography>
+   (100%)
+</Box>
+        </Typography>
+        </Box>
+        <Box sx={{MT:10}}>
+        <Button> Close Market </Button>
+        </Box>
+      
       </TabPanel>
     </Box>
   );

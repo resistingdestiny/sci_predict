@@ -17,6 +17,7 @@ import Typography from "@mui/material/Typography";
 import EnhancedTable from "components/Table"
 import ColorTabs from "components/TabSection"
 import CardStatsHorizontal from "components/CardStatistics";
+import PeopleIcon from '@mui/icons-material/People';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles((theme) => ({
@@ -121,7 +122,7 @@ function DashboardPage(props) {
             </Card>
           </Grid>
           <Grid item={true} xs={12} md={4}>
-            <Grid item mb={4}> 
+            <Grid item mb={2}> 
             <Card>
               <CardContent sx={{ padding: 3 }}>
               <Box display="flex" alignItems="center">
@@ -137,6 +138,25 @@ function DashboardPage(props) {
               </CardContent>
             </Card>
             </Grid>
+            <Grid item mb={2}> 
+            <Card>
+              <CardContent sx={{ padding: 3 }}>
+                <Box>
+                <Box display="flex" alignItems="center">
+              <PeopleIcon />
+
+              <Typography sx={{ fontWeight: 'bold', marginLeft: 2 }}>
+    <strong style={{ fontWeight: 'bold', padding: 3, ML: 5}}>Predictions:</strong>
+  </Typography>
+  <Typography sx={{ fontWeight: 'bold', marginLeft: 2 }} className={classes.gradientText}>
+    47
+  </Typography>
+</Box>
+              
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
             <Grid item mb={4}> 
             <Card>
               <CardContent sx={{ padding: 3 }}>
@@ -147,16 +167,7 @@ function DashboardPage(props) {
               </CardContent>
             </Card>
             </Grid>
-            <Grid item mb={4}> 
-            <Card>
-              <CardContent sx={{ padding: 3 }}>
-                <Box>
-                  
-              
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
+            
           </Grid>
           <Grid item={true} xs={12} md={12}>
             <Card>
